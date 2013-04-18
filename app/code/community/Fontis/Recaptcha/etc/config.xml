@@ -28,49 +28,11 @@
         </Fontis_Recaptcha>
     </modules>
     <global>
-        <rewrite>
-            <fontis_recaptcha>
-                <from><![CDATA[#^/customer/account/createpost/#]]></from>
-                <to>/recaptcha/account/createpost/</to>
-            </fontis_recaptcha>
-        </rewrite>
-        <rewrite>
-            <fontis_recaptcha2>
-                <from><![CDATA[#^/sendfriend/product/sendmail/#]]></from>
-                <to>/recaptcha/product/sendmail/</to>
-            </fontis_recaptcha2>
-        </rewrite>
-        <rewrite>
-            <fontis_recaptcha3>
-                <from><![CDATA[#^/review/product/post/#]]></from>
-                <to>/recaptcha/review/post/</to>
-            </fontis_recaptcha3>
-        </rewrite>
-        <rewrite>
-           <fontis_recaptcha4>
-                <from><![CDATA[#^/contacts/contacts/post/#]]></from>
-                <to>/recaptcha/contacts/post/</to>
-            </fontis_recaptcha4>
-        </rewrite>
-        <rewrite>
-           <fontis_recaptcha5>
-                <from><![CDATA[#^/contacts#]]></from>
-                <to>/recaptcha/contacts/</to>
-            </fontis_recaptcha5>
-        </rewrite>
-
         <models>
             <fontis_recaptcha>
                 <class>Fontis_Recaptcha_Model</class>
             </fontis_recaptcha>
         </models>
-        <blocks>
-            <review>
-                <rewrite>
-                    <form>Fontis_Recaptcha_Block_Review_Form</form>
-                </rewrite>
-            </review>
-        </blocks>
         <helpers>
             <fontis_recaptcha>
                 <class>Fontis_Recaptcha_Helper</class>
@@ -87,6 +49,44 @@
                 </args>
             </fontis_recaptcha>
         </routers>
+        <events>
+            <controller_action_predispatch_customer_account_createpost>
+                <observers>
+                    <fontis_recaptcha>
+                        <type>model</type>
+                        <class>Fontis_Recaptcha_Model_Observer</class>
+                        <method>validateRecaptchaCustomerAccountCreation</method>
+                    </fontis_recaptcha>
+                </observers>
+            </controller_action_predispatch_customer_account_createpost>
+            <controller_action_predispatch_contacts_index_post>
+                <observers>
+                    <fontis_recaptcha>
+                        <type>model</type>
+                        <class>Fontis_Recaptcha_Model_Observer</class>
+                        <method>validateRecaptchaContactsPost</method>
+                    </fontis_recaptcha>
+                </observers>
+            </controller_action_predispatch_contacts_index_post>
+            <controller_action_predispatch_sendfriend_product_sendmail>
+                <observers>
+                    <fontis_recaptcha>
+                        <type>model</type>
+                        <class>Fontis_Recaptcha_Model_Observer</class>
+                        <method>validateRecaptchaSendfriend</method>
+                    </fontis_recaptcha>
+                </observers>
+            </controller_action_predispatch_sendfriend_product_sendmail>
+            <controller_action_predispatch_review_product_post>
+                <observers>
+                    <fontis_recaptcha>
+                        <type>model</type>
+                        <class>Fontis_Recaptcha_Model_Observer</class>
+                        <method>validateRecaptchaDataReviewProduct</method>
+                    </fontis_recaptcha>
+                </observers>
+            </controller_action_predispatch_review_product_post>
+        </events>
         <layout>
             <updates>
                 <fontis_recaptcha module="Fontis_Recaptcha">
