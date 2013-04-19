@@ -32,14 +32,12 @@
         </reference>
     </sendfriend_product_send>
 
-    <contacts_contacts_index>
-        <update handle="contacts_index_index" />
-
+    <contacts_index_index>
         <reference name="contactForm">
             <action method="setTemplate"><template>fontis/recaptcha/contacts.phtml</template></action>
             <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
         </reference>
-    </contacts_contacts_index>
+    </contacts_index_index>
 
     <customer_account_create>
         <remove name="customer_form_register"/>
@@ -52,7 +50,8 @@
     </customer_account_create>
 
     <review_product_list>
-        <block name="product.review.form" >
+     <remove name="product.review.form"/>
+        <block type="review/form" name="recaptcha_product_review_form" template="fontis/recaptcha/form.phtml">
             <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
         </block>
     </review_product_list>
