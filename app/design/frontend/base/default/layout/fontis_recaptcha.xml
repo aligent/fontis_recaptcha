@@ -23,36 +23,39 @@
 -->
 <layout version="0.1.0">
     <sendfriend_product_send>
-        <remove name="sendfriend.send"/>
-
-        <reference name="content">
-            <block type="sendfriend/send" name="recaptcha_sendfriend_send" template="fontis/recaptcha/send.phtml">
-                <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
-            </block>
-        </reference>
+      <reference name="sendfriend.send">
+          <action method="setTemplate">
+              <template>fontis/recaptcha/send.phtml</template>
+          </action>
+          <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
+      </reference>
     </sendfriend_product_send>
+
 
     <contacts_index_index>
         <reference name="contactForm">
-            <action method="setTemplate"><template>fontis/recaptcha/contacts.phtml</template></action>
+            <action method="setTemplate">
+                <template>fontis/recaptcha/contacts.phtml</template>
+            </action>
             <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
         </reference>
     </contacts_index_index>
 
     <customer_account_create>
-        <remove name="customer_form_register"/>
-
-        <reference name="content">
-            <block type="customer/form_register" name="recaptcha_form_register" template="fontis/recaptcha/register.phtml">
-                <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
-            </block>
+        <reference name="customer_form_register">
+            <action method="setTemplate">
+                <template>fontis/recaptcha/register.phtml</template>
+            </action>
+            <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
         </reference>
     </customer_account_create>
 
     <review_product_list>
-     <remove name="product.review.form"/>
-        <block type="review/form" name="recaptcha_product_review_form" template="fontis/recaptcha/form.phtml">
+        <reference name="product.review.form">
+            <action method="setTemplate">
+                <template>fontis/recaptcha/form.phtml</template>
+            </action>
             <block type="core/template" name="recaptcha.box" as="recaptcha_box" template="fontis/recaptcha/recaptcha.phtml"/>
-        </block>
+        </reference>
     </review_product_list>
 </layout>
