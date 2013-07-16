@@ -89,7 +89,7 @@
         </events>
         <layout>
             <updates>
-                <fontis_recaptcha module="Fontis_Recaptcha">
+                <fontis_recaptcha>
                     <file>fontis_recaptcha.xml</file>
                 </fontis_recaptcha>
             </updates>
