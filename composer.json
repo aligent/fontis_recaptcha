@@ -1,0 +1,10 @@
+{
+  "name":"fontix/recaptcha",
+  "type":"magento-module",
+  "license":"OSL-3.0",
+  "homepage":"https://github.com/aligent/fontis_recaptcha",
+  "description":"Fontis reCAPTCHA extension for Magento",
+  "require":{
+    "magento-hackathon/magento-composer-installer":"*"
+  }
+}
